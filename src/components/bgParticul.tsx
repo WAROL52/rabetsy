@@ -13,7 +13,7 @@ export function BgParticul({ children }: PropsWithChildren) {
   }, [resolvedTheme]);
 
   return (
-    <div className="mt-[180px] relative flex min-h-[1000px] w-full flex-col  overflow-hidden rounded-lg bg-background md:shadow-xl">
+    <div className=" relative flex min-h-[1000px] w-full flex-col  overflow-hidden rounded-lg bg-background md:shadow-xl">
       <div>{children}</div>
       <Particles
         className="absolute inset-0 z-0"

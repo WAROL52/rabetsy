@@ -6,6 +6,7 @@ import { BgParticul } from "@/components/bgParticul";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollAreaController } from "@/components/ScrollAreaController";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,12 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <head>
-        <script src="//unpkg.com/react-scan/dist/auto.global.js" />
-        {/* rest of your scripts go under 
-      </head> */}
+      <head>
+        <Script src="//unpkg.com/react-scan/dist/auto.global.js" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden selection:bg-primary selection:text-foreground dark:selection:text-background`}
       >
         <ThemeProvider
           attribute="class"
