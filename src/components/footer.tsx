@@ -54,7 +54,16 @@ export function Footer() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {2025}{" "}
+              <Link
+                href={"https://github.com/WAROL52"}
+                className="underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WAROL52
+              </Link>
+              . All rights reserved.
             </p>
           </div>
         </div>
