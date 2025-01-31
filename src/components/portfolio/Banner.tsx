@@ -7,7 +7,7 @@ import { MorphingText } from "../ui/morphing-text";
 
 export const Banner = () => {
   return (
-    <section className="banner" id="home">
+    <section className="banner border border-secondary" id="home">
       <div className="container mx-auto">
         <div className="grid grid-cols-12">
           <div className=" col-span-12 md:col-span-6 xl:col-span-7">
