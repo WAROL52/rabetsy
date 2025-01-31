@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <Banner />
-      <TracingBeam className="px-2 ">
+      <TracingBeam className="px-11 md:px-8 lg:px-2 ">
         <AboutMe>
           <LineSeparator />
           <Education />
@@ -25,7 +25,9 @@ export default function Home() {
         </AboutMe>
         <Projects />
       </TracingBeam>
-      <ContactMe />
+      <div className="mx-11">
+        <ContactMe />
+      </div>
     </div>
   );
 }

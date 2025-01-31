@@ -7,24 +7,17 @@ import { MorphingText } from "../ui/morphing-text";
 
 export const Banner = () => {
   return (
-    <section className="banner border border-secondary" id="home">
+    <section
+      className="banner h-[92vh] flex items-center md:h-[75vh]"
+      id="home"
+    >
       <div className="container mx-auto">
         <div className="grid grid-cols-12">
           <div className=" col-span-12 md:col-span-6 xl:col-span-7">
-            <TrackVisibility>{({}) => <BannerText />}</TrackVisibility>
+            <BannerText />
           </div>
           <div className=" col-span-12 md:col-span-6 xl:col-span-5">
-            <TrackVisibility>
-              {({ isVisible }) => (
-                <div
-                  className={
-                    isVisible ? "animate__animated animate__zoomIn" : ""
-                  }
-                >
-                  <img src={headerImg} alt="Header Img" />
-                </div>
-              )}
-            </TrackVisibility>
+            <img src={headerImg} alt="Header Img" />
           </div>
         </div>
       </div>
@@ -34,33 +27,36 @@ export const Banner = () => {
 
 function BannerText() {
   return (
-    <section className="relative border border-primary">
-      <div className="relative mx-auto max-w-screen-xl px-4  sm:px-6 lg:flex lg:h-[600] lg:items-center lg:px-8">
-        <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-          <h1 className="text-3xl font-extrabold sm:text-5xl">
+    <section className="">
+      <div className=" mx-auto p-4 ">
+        <div className="">
+          <h1 className="text-center text-3xl font-extrabold sm:text-5xl">
             <Cover>
               <span className="text-yellow-500">RABETSY</span>
               <span> Rolio</span>
             </Cover>
-            <div className="flex mx-auto">
-              <div>Développeur</div>
-              <MorphingText texts={["Web", "Mobile", "Desktop"]} />
-            </div>
           </h1>
-          <p className="mt-4 max-w-lg sm:text-xl/relaxed">
+          <div className="flex justify-center gap-2 text-3xl font-extrabold sm:text-5xl">
+            <span className="">Développeur</span>
+            <MorphingText
+              className=" text-center w-1/4"
+              texts={["Web", "Mobile", "Desktop"]}
+            />
+          </div>
+          <p className="mx-auto max-w-lg sm:text-xl/relaxed">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
             illo tenetur fuga ducimus numquam ea!
           </p>
-          <div className="mt-8 flex flex-wrap gap-4 text-center">
+          <div className=" mt-8 flex flex-wrap gap-4 text-center justify-center">
             <a
               href="#"
-              className="block w-full rounded bg-purple-500 px-12 py-3 text-sm font-medium text-forground shadow hover:bg-yellow-600 hover:text-black focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+              className="block w-full rounded bg-purple-500 px-12 py-3 text-sm font-medium text-forground shadow focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             >
               Télécharger CV
             </a>
             <a
               href="#"
-              className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium shadow text-secondary focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
+              className="block w-full rounded bg-primary text-primary-foreground px-12 py-3 text-sm font-medium shadow  focus:outline-none focus:ring sm:w-auto"
             >
               Mon compte Github
             </a>
