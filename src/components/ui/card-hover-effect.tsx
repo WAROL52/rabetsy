@@ -2,6 +2,17 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "./button";
+import {
+  Credenza,
+  CredenzaContent,
+  CredenzaHeader,
+  CredenzaTitle,
+  CredenzaDescription,
+  CredenzaBody,
+  CredenzaFooter,
+  CredenzaClose,
+} from "../Credenza";
 
 export const HoverEffect = ({
   items,
@@ -24,35 +35,35 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
-          className="relative group  block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-secondary/25  block  rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
-        </Link>
+        <StateModal key={item?.link}>
+          <div
+            className="relative group  block p-2 h-full w-full"
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 h-full w-full bg-secondary/25  block  rounded-3xl"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <Card>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDescription>{item.description}</CardDescription>
+            </Card>
+          </div>
+        </StateModal>
       ))}
     </div>
   );
@@ -111,3 +122,39 @@ export const CardDescription = ({
     </p>
   );
 };
+
+type StateModalProps = {
+  children: React.ReactNode;
+};
+function StateModal({ children }: StateModalProps) {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  return (
+    <>
+      <div onClick={handleOpen} className="cursor-pointer">
+        {children}
+      </div>
+
+      <Credenza open={open} onOpenChange={setOpen}>
+        <CredenzaContent>
+          <CredenzaHeader>
+            <CredenzaTitle>Credenza</CredenzaTitle>
+            <CredenzaDescription>
+              A responsive modal component for shadcn/ui.
+            </CredenzaDescription>
+          </CredenzaHeader>
+          <CredenzaBody>This modal got triggered using state</CredenzaBody>
+          <CredenzaFooter>
+            <CredenzaClose asChild>
+              <Button>Close</Button>
+            </CredenzaClose>
+          </CredenzaFooter>
+        </CredenzaContent>
+      </Credenza>
+    </>
+  );
+}
