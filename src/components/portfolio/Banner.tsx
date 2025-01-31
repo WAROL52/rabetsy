@@ -34,7 +34,7 @@ export const Banner = () => {
 
 function BannerText() {
   return (
-    <section className="relative ">
+    <section className="relative border border-primary">
       <div className="relative mx-auto max-w-screen-xl px-4  sm:px-6 lg:flex lg:h-[600] lg:items-center lg:px-8">
         <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
           <h1 className="text-3xl font-extrabold sm:text-5xl">
