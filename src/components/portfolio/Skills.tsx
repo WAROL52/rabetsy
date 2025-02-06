@@ -16,7 +16,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Globe, LaptopMinimal, Smartphone } from "lucide-react";
 import { CharBarMixed } from "../charts/ChartBarMixed";
-import { ProgressBar } from "../ProgressBar";
+import { ProgressBarMeteorite } from "../ProgressBarMeteorite";
 
 export default function Component() {
   return (
@@ -63,22 +63,22 @@ export default function Component() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
       <TabsContent value="web" className="space-y-4">
-        <ProgressBar label="React" progress={90} />
-        <ProgressBar label="NextJs" progress={75} />
-        <ProgressBar label="NestJs" progress={50} />
-        <ProgressBar label="Adonis" progress={60} />
+        <ProgressBarMeteorite label="React" value={90} />
+        <ProgressBarMeteorite label="NextJs" value={75} />
+        <ProgressBarMeteorite label="NestJs" value={50} />
+        <ProgressBarMeteorite label="Adonis" value={60} />
       </TabsContent>
       <TabsContent value="mobile" className="space-y-4">
-        <ProgressBar label="React Native" progress={80} />
-        <ProgressBar label="Expo" progress={70} />
-        <ProgressBar label="Flutter" progress={50} />
-        <ProgressBar label="Android Studio" progress={40} />
+        <ProgressBarMeteorite label="React Native" value={80} />
+        <ProgressBarMeteorite label="Expo" value={70} />
+        <ProgressBarMeteorite label="Flutter" value={50} />
+        <ProgressBarMeteorite label="Android Studio" value={40} />
       </TabsContent>
       <TabsContent value="desktop" className="space-y-4">
-        <ProgressBar label="C/C++" progress={80} />
-        <ProgressBar label="Tauri" progress={45} />
-        <ProgressBar label="Electron" progress={60} />
-        <ProgressBar label="Python" progress={90} />
+        <ProgressBarMeteorite label="C/C++" value={80} />
+        <ProgressBarMeteorite label="Tauri" value={45} />
+        <ProgressBarMeteorite label="Electron" value={60} />
+        <ProgressBarMeteorite label="Python" value={90} />
       </TabsContent>
     </Tabs>
   );

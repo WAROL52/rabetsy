@@ -23,7 +23,7 @@ export function ScrollAreaController({ children }: ScrollAreaControllerProps) {
     <div className={cn(" w-full h-[93vh] overflow-auto", className)} ref={area}>
       <motion.div
         className={cn(
-          "fixed inset-x-0 z-[1000] h-1 origin-left bg-gradient-to-r from-[#A97CF8] via-[#F38CB8] to-[#FDCC92]",
+          "fixed inset-x-0 z-[1000] h-1 origin-left bg-gradient-to-r from-secondary via-[#F38CB8] to-primary",
           "top-[65px]"
         )}
         style={{

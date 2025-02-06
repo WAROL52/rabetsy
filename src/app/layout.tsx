@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script src="//unpkg.com/react-scan/dist/auto.global.js" />
+        {/* <Script src="//unpkg.com/react-scan/dist/auto.global.js" /> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden selection:bg-primary selection:text-foreground dark:selection:text-background`}
