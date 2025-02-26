@@ -13,6 +13,7 @@ import {
   CredenzaFooter,
   CredenzaClose,
 } from "../Credenza";
+import { MorphingCard } from "./morphing-card";
 
 export const HoverEffect = ({
   items,
@@ -38,8 +39,8 @@ export const HoverEffect = ({
         <StateModal key={item?.link}>
           <div
             className="relative group  block p-2 h-full w-full"
-            onMouseEnter={() => setHoveredIndex(idx)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            // onMouseEnter={() => setHoveredIndex(idx)}
+            // onMouseLeave={() => setHoveredIndex(null)}
           >
             <AnimatePresence>
               {hoveredIndex === idx && (
@@ -58,10 +59,13 @@ export const HoverEffect = ({
                 />
               )}
             </AnimatePresence>
-            <Card>
+            <div className=" h-full w-full bg-secondary/25  block  rounded-[12px] hover:ring-4 ring-secondary/50">
+              <MorphingCard />
+            </div>
+            {/* <Card>
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
-            </Card>
+            </Card> */}
           </div>
         </StateModal>
       ))}
@@ -135,9 +139,9 @@ function StateModal({ children }: StateModalProps) {
 
   return (
     <>
-      <div onClick={handleOpen} className="cursor-pointer">
-        {children}
-      </div>
+      {children}
+      {/* <div onClick={handleOpen} className="cursor-pointer">
+      </div> */}
 
       <Credenza open={open} onOpenChange={setOpen}>
         <CredenzaContent>

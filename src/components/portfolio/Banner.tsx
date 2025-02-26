@@ -4,12 +4,18 @@ const headerImg =
 import TrackVisibility from "react-on-screen";
 import { Cover } from "../ui/cover";
 import { MorphingText } from "../ui/morphing-text";
+import { RocketMagic } from "../RocketMagic";
+import { SvgPlanet } from "../SvgPlanet";
+import { SlowMousePointerFinger } from "../SlowMousePointerFinger";
+import { useInViewport } from "@mantine/hooks";
 
 export const Banner = () => {
+  const { ref, inViewport } = useInViewport<HTMLDivElement>();
   return (
     <section
       className="banner h-[92vh] flex items-center md:h-[75vh]"
       id="home"
+      ref={ref}
     >
       <div className="container mx-auto">
         <div className="grid grid-cols-12">
@@ -17,7 +23,9 @@ export const Banner = () => {
             <BannerText />
           </div>
           <div className=" col-span-12 md:col-span-6 xl:col-span-5">
-            <img src={headerImg} alt="Header Img" />
+            {/* <img src={headerImg} alt="Header Img" /> */}
+            <SvgPlanet></SvgPlanet>
+            <SlowMousePointerFinger isVisible={inViewport} />
           </div>
         </div>
       </div>

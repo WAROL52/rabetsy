@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useInterval, useInViewport, useMouse } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { SlowMousePointerFinger } from "./SlowMousePointerFinger";
 
 export type ProgressBarMeteoriteProps = {
   value: number;
@@ -41,11 +42,12 @@ export function ProgressBarMeteorite({
           transition={{ duration: 0.7, type: "tween", ease: "circInOut" }}
           whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
           drag
-          dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
+          //   dragConstraints={{ left: -300, right: 300, top: -300, bottom: 300 }}
           dragElastic={0.2}
           dragSnapToOrigin={!inViewport}
         >
           <Rocket className="absolute bottom-[-6px] text-primary rotate-45 " />
+          {/* <SlowMousePointerFinger /> */}
         </motion.div>
       </motion.div>
     </div>

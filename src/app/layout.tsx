@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-hidden">
       <head>
         {/* <Script src="//unpkg.com/react-scan/dist/auto.global.js" /> */}
       </head>

@@ -3,6 +3,7 @@
 import { PropsWithChildren, useRef } from "react";
 import { motion, useScroll, useSpring } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useMouse } from "@mantine/hooks";
 
 export type ScrollAreaControllerProps = PropsWithChildren;
 
@@ -20,7 +21,13 @@ export function ScrollAreaController({ children }: ScrollAreaControllerProps) {
   const className = cn("");
 
   return (
-    <div className={cn(" w-full h-[93vh] overflow-auto", className)} ref={area}>
+    <div
+      className={cn(" w-full h-[93vh] overflow-auto", className)}
+      ref={area}
+      onScroll={(e) => {
+        console.log(e);
+      }}
+    >
       <motion.div
         className={cn(
           "fixed inset-x-0 z-[1000] h-1 origin-left bg-gradient-to-r from-secondary via-[#F38CB8] to-primary",
