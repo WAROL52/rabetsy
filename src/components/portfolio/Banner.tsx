@@ -8,6 +8,7 @@ import { RocketMagic } from "../RocketMagic";
 import { SvgPlanet } from "../SvgPlanet";
 import { SlowMousePointerFinger } from "../SlowMousePointerFinger";
 import { useInViewport } from "@mantine/hooks";
+import { useCvStore } from "@/stores/cvStore";
 
 export const Banner = () => {
   const { ref, inViewport } = useInViewport<HTMLDivElement>();
@@ -34,21 +35,22 @@ export const Banner = () => {
 };
 
 function BannerText() {
+  const { isLoading, data } = useCvStore();
   return (
     <section className="">
       <div className=" mx-auto p-4 ">
         <div className="">
           <h1 className="text-center text-3xl font-extrabold sm:text-5xl">
             <Cover>
-              <span className="text-yellow-500">RABETSY</span>
-              <span> Rolio</span>
+              <span className="text-yellow-500">{data?.firstname}</span>
+              <span> {data?.lastname}</span>
             </Cover>
           </h1>
           <div className="flex justify-center gap-2 text-3xl font-extrabold sm:text-5xl">
-            <span className="">Développeur</span>
+            <span className="">{data?.sections.hero.head.title}</span>
             <MorphingText
               className=" text-center w-1/4"
-              texts={["Web", "Mobile", "Desktop"]}
+              texts={data?.sections.hero.head.descriptions || []}
             />
           </div>
           <p className="mx-auto max-w-lg sm:text-xl/relaxed">
