@@ -17,20 +17,48 @@
 					"Web","Mobile","Desktop"
 				]
 			},
-			"descriptions":[]
+			"descriptions":[
+				"Associant un design épuré, des performances optimales et un code robuste et structuré, je conçois des solutions sur mesure adaptées précisément à vos besoins.",
+				"Développeur méticuleux et passionné, je suis toujours prêt à relever de nouveaux défis."
+			]
 		},
 		"aboutMe":{
-			"title":"",
-			"descriptions":[]
+			"title":"Hey, Je suis Warol52",
+			"descriptions":[
+				"Développeur web et logiciel passionné, je crée des solutions numériques intuitives et performantes.",
+				"Fort d’une solide formation en informatique, alliant rigueur académique et apprentissage en autodidacte. J'ai une solide maîtrise du développement full-stack.",
+				"Ma priorité est de garantir la performance, la sécurité et la simplicité d’utilisation de chaque projet.",
+				"J’aime explorer de nouvelles technologies et améliorer constamment mes compétences."
+			]
 		},
 		"education":{
-			"title":"",
-			"descriptions":[],
+			"title":"Education",
+			"descriptions":[ "Voici les études académiques que j'ai suivies." ],
 			"steps":[
 				{
-					"title":"",
-					"date":"",
-					"descriptions":[]
+					"title":"Tronc Commun Informatique",
+					"school":"Ecole 42",
+					"date":"2024 - A ce jour",
+					"descriptions":[
+						"42 a un modèle éducatif unique et innovant, basé sur l'apprentissage entre pairs et le travail par projets."
+					]
+				},
+				{
+					"title":"Troisième année de formation licence",
+					"school":"UPH - Université Privée Hay",
+					"date":"2018 - 2021",
+					"descriptions":[
+						"Apprentissage des concepts clés du développement logiciel, de l’architecture des systèmes et des bases de données, avec une forte orientation vers la programmation et l’algorithmique.",
+						"Préparation à la gestion de projets complexes en développant des compétences en développement web, mobile, et en gestion de la performance des systèmes informatiques."
+					]
+				},
+				{
+					"title":"Bachelier",
+					"school":"",
+					"date":"2017 - 2018",
+					"descriptions":[
+						"Série D, avec une mention Passable."
+					]
 				}
 			]
 		},
@@ -39,9 +67,26 @@
 			"descriptions":[],
 			"steps":[
 				{
-					"title":"",
-					"date":"",
-					"descriptions":[]
+					"title":"Développeur indépendant",
+					"date":"2023 - Maintenant",
+					"descriptions":["Développement et maintenance de divers projets à court et moyen terme pour mon propre compte."]
+				},
+				{
+					"title":"Gestion de transport routier : TsaraTrans",
+					"date":"07/2022 - 08/2022",
+					"descriptions":["Il s'agit d'une application web conçue pour gérer les opérations des opérations de transport routier."]
+				},
+				{
+					"title":"Madagascar National Parc",
+					"date":"2022-2023",
+					"descriptions":["Développement et maintenance d'une plateforme de signalement pour la protection des ressources naturelles de Madagascar."]
+				},
+				{
+					"title":"Stage en informatique (ESTI)",
+					"date":"2021 (6 mois)",
+					"descriptions":[
+						"Apprentissage des différentes méthodes de gestion de projet afin de collaborer en équipe, à résoudre des problèmes techniques et à utiliser des outils professionnels dans un environnement de travail."
+					]
 				}
 			]
 		},
@@ -55,7 +100,19 @@
 					"techno":[
 						{
 							"name":"React",
-							"value":80
+							"value":85
+						},
+						{
+							"name":"NextJs",
+							"value":75
+						},
+						{
+							"name":"NestJs",
+							"value":50
+						},
+						{
+							"name":"Adonis",
+							"value":60
 						}
 					]
 				},
@@ -64,8 +121,20 @@
 					"icon":"",
 					"techno":[
 						{
-							"name":"React",
-							"value":80
+							"name":"React Native",
+							"value":75
+						},
+						{
+							"name":"Expo",
+							"value":70
+						},
+						{
+							"name":"Flutter",
+							"value":60
+						},
+						{
+							"name":"Android Studio",
+							"value":50
 						}
 					]
 				},
@@ -74,8 +143,20 @@
 					"icon":"",
 					"techno":[
 						{
-							"name":"React",
+							"name":"C/C++",
 							"value":80
+						},
+						{
+							"name":"Tauri",
+							"value":60
+						},
+						{
+							"name":"Electron",
+							"value":70
+						},
+						{
+							"name":"Python",
+							"value":89
 						}
 					]
 				}
