@@ -26,7 +26,10 @@ export const Banner = () => {
           <div className=" col-span-12 md:col-span-6 xl:col-span-5">
             {/* <img src={headerImg} alt="Header Img" /> */}
             <SvgPlanet></SvgPlanet>
-            <SlowMousePointerFinger isVisible={inViewport} />
+            <SlowMousePointerFinger
+              // isVisible={inViewport}
+              isVisible={false}
+            />
           </div>
         </div>
       </div>

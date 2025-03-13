@@ -7,6 +7,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ScrollAreaController } from "@/components/ScrollAreaController";
 import Script from "next/script";
+import { LoadingPage } from "@/components/loadingPage";
+import { Cursor } from "@/components/cursor/Cursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-hidden">
+    <html lang="en" className="overflow-hidden dark">
       <head>
         {/* <Script src="//unpkg.com/react-scan/dist/auto.global.js" /> */}
       </head>
@@ -43,10 +45,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <ScrollAreaController>
-            <BgParticul>{children}</BgParticul>
-            <Footer />
-          </ScrollAreaController>
+          <LoadingPage>
+            <ScrollAreaController>
+              <BgParticul>{children}</BgParticul>
+              <Footer />
+            </ScrollAreaController>
+          </LoadingPage>
+          <Cursor />
         </ThemeProvider>
       </body>
     </html>
