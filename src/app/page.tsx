@@ -8,25 +8,30 @@ import { Projects } from "@/components/portfolio/Projects";
 import { Resume } from "@/components/portfolio/Resume";
 import { Skills } from "@/components/portfolio/Skills";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { CvType } from "../../public/cv";
 
-export default function Home() {
+export default async function Home() {
+  const data: CvType = await (
+    await fetch(
+      "https://raw.githubusercontent.com/WAROL52/rabetsy/refs/heads/main/public/fr.cv.json"
+    )
+  ).json();
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   return (
     <div>
-      <Banner />
+      <Banner data={data} />
       <TracingBeam className="px-11 md:px-8 lg:px-2 ">
-        <AboutMe>
+        <AboutMe data={data}>
           <LineSeparator />
-          <Education />
-          <LineSeparator />
-          <Resume />
-          <LineSeparator />
-          <Skills />
+          <Education data={data} />
+          <Resume data={data} />
+          <Skills data={data} />
           <LineSeparator />
         </AboutMe>
-        <Projects />
+        <Projects data={data} />
       </TracingBeam>
       <div className="mx-11">
-        <ContactMe />
+        <ContactMe data={data} />
       </div>
     </div>
   );

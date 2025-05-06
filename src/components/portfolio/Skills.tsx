@@ -2,12 +2,15 @@
 
 import { Section } from "../Section";
 
-export type SkillsProps = {};
+export type SkillsProps = {} & CvTypeProps;
 
-export function Skills({}: SkillsProps) {
+export function Skills({ data }: SkillsProps) {
   return (
-    <Section title="Skills" description="Here are some of my skills.">
-      <Component />
+    <Section
+      title={data.sections.skills.title}
+      description={data.sections.skills.descriptions.join(",")}
+    >
+      <Component data={data} />
     </Section>
   );
 }
@@ -17,69 +20,44 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Globe, LaptopMinimal, Smartphone } from "lucide-react";
 import { CharBarMixed } from "../charts/ChartBarMixed";
 import { ProgressBarMeteorite } from "../ProgressBarMeteorite";
+import { CvTypeProps } from "../../../public/cv";
 
-export default function Component() {
+export default function Component({ data }: CvTypeProps) {
   return (
-    <Tabs defaultValue="web" className="">
+    <Tabs
+      defaultValue={data.sections.skills.tags.at(0)?.name || "web"}
+      className=""
+    >
       <ScrollArea>
         <TabsList className="mb-2 gap-1 bg-transparent flex justify-start">
-          <TabsTrigger
-            value="web"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <Globe
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Web
-          </TabsTrigger>
-          <TabsTrigger
-            value="mobile"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <Smartphone
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Mobile
-          </TabsTrigger>
-          <TabsTrigger
-            value="desktop"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <LaptopMinimal
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Desktop
-          </TabsTrigger>
+          {data.sections.skills.tags.map((tag) => (
+            <TabsTrigger
+              key={tag.name}
+              value={tag.name}
+              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
+            >
+              <img
+                src={tag.icon}
+                alt={tag.name}
+                className="h-4 w-4 rounded-full border-2 border-white dark:border-slate-900"
+              />
+              {tag.name}
+            </TabsTrigger>
+          ))}
         </TabsList>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <TabsContent value="web" className="space-y-4">
-        <ProgressBarMeteorite label="React" value={90} />
-        <ProgressBarMeteorite label="NextJs" value={75} />
-        <ProgressBarMeteorite label="NestJs" value={50} />
-        <ProgressBarMeteorite label="Adonis" value={60} />
-      </TabsContent>
-      <TabsContent value="mobile" className="space-y-4">
-        <ProgressBarMeteorite label="React Native" value={80} />
-        <ProgressBarMeteorite label="Expo" value={70} />
-        <ProgressBarMeteorite label="Flutter" value={50} />
-        <ProgressBarMeteorite label="Android Studio" value={40} />
-      </TabsContent>
-      <TabsContent value="desktop" className="space-y-4">
-        <ProgressBarMeteorite label="C/C++" value={80} />
-        <ProgressBarMeteorite label="Tauri" value={45} />
-        <ProgressBarMeteorite label="Electron" value={60} />
-        <ProgressBarMeteorite label="Python" value={90} />
-      </TabsContent>
+      {data.sections.skills.tags.map((tag) => (
+        <TabsContent value={tag.name} className="space-y-4" key={tag.name}>
+          {tag.techno.map((techno) => (
+            <ProgressBarMeteorite
+              key={techno.name}
+              label={techno.name}
+              value={techno.value}
+            />
+          ))}
+        </TabsContent>
+      ))}
     </Tabs>
   );
 }

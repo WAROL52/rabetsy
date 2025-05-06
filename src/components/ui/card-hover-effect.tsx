@@ -14,16 +14,13 @@ import {
   CredenzaClose,
 } from "../Credenza";
 import { MorphingCard } from "./morphing-card";
+import { CvTypeProps } from "../../../public/cv";
 
 export const HoverEffect = ({
   items,
   className,
 }: {
-  items: {
-    title: string;
-    description: string;
-    link: string;
-  }[];
+  items: CvTypeProps["data"]["sections"]["projects"]["tags"][number]["projects"];
   className?: string;
 }) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -36,7 +33,7 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <StateModal key={item?.link}>
+        <StateModal key={item?.url}>
           <div
             className="relative group  block p-2 h-full w-full"
             // onMouseEnter={() => setHoveredIndex(idx)}
@@ -60,7 +57,7 @@ export const HoverEffect = ({
               )}
             </AnimatePresence>
             <div className=" h-full w-full bg-secondary/25  block  rounded-[12px] hover:ring-4 ring-secondary/50">
-              <MorphingCard />
+              <MorphingCard item={item} />
             </div>
             {/* <Card>
               <CardTitle>{item.title}</CardTitle>

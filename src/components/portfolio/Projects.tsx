@@ -2,13 +2,16 @@
 
 // import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
-export type PropjetsProps = {};
+export type PropjetsProps = {} & CvTypeProps;
 
-export function Projects({}: PropjetsProps) {
+export function Projects({ data }: PropjetsProps) {
   return (
     <div className="">
-      <Section title="Projects" description="Here are some of my projects.">
-        <Component />
+      <Section
+        title={data.sections.projects.title}
+        description={data.sections.projects.descriptions.join(" ")}
+      >
+        <Component data={data} />
       </Section>
     </div>
   );
@@ -18,145 +21,135 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Globe, LaptopMinimal, Smartphone } from "lucide-react";
 
-export default function Component() {
+export default function Component({ data }: PropjetsProps) {
   return (
-    <Tabs defaultValue="web" className="">
+    <Tabs
+      defaultValue={data.sections.projects.tags.at(0)?.name || "#"}
+      className=""
+    >
       <ScrollArea>
         <TabsList className="mb-2 gap-1 bg-transparent flex justify-start">
-          <TabsTrigger
-            value="web"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <Globe
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Web
-          </TabsTrigger>
-          <TabsTrigger
-            value="mobile"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <Smartphone
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Mobile
-          </TabsTrigger>
-          <TabsTrigger
-            value="desktop"
-            className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
-          >
-            <LaptopMinimal
-              className="-ms-0.5 me-1.5 opacity-60"
-              size={16}
-              strokeWidth={2}
-              aria-hidden="true"
-            />
-            Desktop
-          </TabsTrigger>
+          {data.sections.projects.tags.map((tag) => (
+            <TabsTrigger
+              key={tag.name}
+              value={tag.name}
+              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-none"
+            >
+              <img
+                src={tag.icon}
+                alt={tag.name}
+                className="h-4 w-4 rounded-full border-2 border-white dark:border-slate-900"
+              />
+              {tag.name}
+            </TabsTrigger>
+          ))}
         </TabsList>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      <TabsContent value="web">
-        <CardHoverEffectDemo />
-      </TabsContent>
-      <TabsContent value="mobile">
-        <CardHoverEffectDemo />
-      </TabsContent>
-      <TabsContent value="desktop">
-        <CardHoverEffectDemo />
-      </TabsContent>
+      {data.sections.projects.tags.map((tag) => (
+        <TabsContent value={tag.name} className="space-y-4" key={tag.name}>
+          <CardHoverEffectDemo tag={tag} />
+        </TabsContent>
+      ))}
     </Tabs>
   );
 }
 import { HoverEffect } from "../ui/card-hover-effect";
 
-export function CardHoverEffectDemo() {
+export function CardHoverEffectDemo({
+  tag,
+}: {
+  tag: PropjetsProps["data"]["sections"]["projects"]["tags"][number];
+}) {
+  const [techno, setTechno] = React.useState("all");
+  const [taken, setTaken] = React.useState(6);
+  const takeCount = taken <= 0 ? Infinity : taken;
+  const projects = tag.projects
+    .filter((project) => {
+      if (techno === "all") return true;
+      return project.techno.includes(techno);
+    })
+    .slice(0, takeCount);
+  const allTechno = tag.projects
+    .map((project) => project.techno)
+    .reduce((acc, techno) => {
+      techno.forEach((t) => {
+        if (!acc.includes(t)) acc.push(t);
+      });
+      return acc;
+    }, [] as string[]);
   return (
     <div className="mx-2">
-      <ProjectFilter />
+      <ProjectFilter
+        techno={techno}
+        setTechno={setTechno}
+        taken={taken}
+        setTaken={setTaken}
+        allTechno={allTechno}
+      />
       <HoverEffect items={projects} />
     </div>
   );
 }
-function ProjectFilter() {
+function ProjectFilter({
+  techno,
+  setTechno,
+  taken,
+  setTaken,
+  allTechno,
+}: {
+  techno: string;
+  setTechno: React.Dispatch<React.SetStateAction<string>>;
+  taken: number;
+  setTaken: React.Dispatch<React.SetStateAction<number>>;
+  allTechno: string[];
+}) {
   return (
     <div className="flex justify-between px-2">
       <div>
-        <FilterByRadio />
+        <FilterByRadio
+          techno={techno}
+          setTechno={setTechno}
+          allTechno={allTechno}
+        />
       </div>
       <div>
-        <NumberToShow />
+        <NumberToShow taken={taken} setTaken={setTaken} />
       </div>
     </div>
   );
 }
-
-export const projects = [
-  {
-    title: "Stripe",
-    description:
-      "A technology company that builds economic infrastructure for the internet.",
-    link: "https://stripe.com",
-  },
-  {
-    title: "Netflix",
-    description:
-      "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
-    link: "https://netflix.com",
-  },
-  {
-    title: "Google",
-    description:
-      "A multinational technology company that specializes in Internet-related services and products.",
-    link: "https://google.com",
-  },
-  {
-    title: "Meta",
-    description:
-      "A technology company that focuses on building products that advance Facebook's mission of bringing the world closer together.",
-    link: "https://meta.com",
-  },
-  {
-    title: "Amazon",
-    description:
-      "A multinational technology company focusing on e-commerce, cloud computing, digital streaming, and artificial intelligence.",
-    link: "https://amazon.com",
-  },
-  {
-    title: "Microsoft",
-    description:
-      "A multinational technology company that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.",
-    link: "https://microsoft.com",
-  },
-];
 
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useId } from "react";
 
-function FilterByRadio() {
+function FilterByRadio({
+  techno,
+  setTechno,
+  allTechno,
+}: {
+  techno: string;
+  setTechno: React.Dispatch<React.SetStateAction<string>>;
+  allTechno: string[];
+}) {
   const id = useId();
 
   const items = [
-    { value: "0", label: "Tout" },
-    { value: "1", label: "React" },
-    { value: "2", label: "Vue" },
-    { value: "3", label: "Next" },
-    { value: "4", label: "Nest" },
+    { value: "all", label: "Tout" },
+    ...allTechno.map((item) => ({
+      value: item,
+      label: item,
+    })),
   ];
 
   return (
     <fieldset className="space-y-4">
-      {/* <legend className="text-sm font-medium leading-none text-foreground">
-        Techno utilisée
-      </legend> */}
-      <RadioGroup className="flex flex-wrap gap-2" defaultValue="0">
+      <RadioGroup
+        className="flex flex-wrap gap-2"
+        value={techno}
+        onValueChange={setTechno}
+      >
         {items.map((item) => (
           <div
             key={`${id}-${item.value}`}
@@ -189,6 +182,7 @@ import {
 } from "@/components/ui/select";
 import { Section } from "../Section";
 import React from "react";
+import { CvTypeProps } from "../../../public/cv";
 
 const Square = ({
   className,
@@ -209,12 +203,21 @@ const Square = ({
   </span>
 );
 
-function NumberToShow() {
+function NumberToShow({
+  taken,
+  setTaken,
+}: {
+  taken: number;
+  setTaken: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const id = useId();
   return (
     <div className="space-y-2">
       {/* <Label htmlFor={id}>Nombre de projet</Label> */}
-      <Select defaultValue="6">
+      <Select
+        value={String(taken)}
+        onValueChange={(val) => setTaken(Number(val))}
+      >
         <SelectTrigger
           id={id}
           className="ps-2 [&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_[data-square]]:shrink-0"

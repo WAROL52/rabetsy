@@ -9,8 +9,9 @@ import { SvgPlanet } from "../SvgPlanet";
 import { SlowMousePointerFinger } from "../SlowMousePointerFinger";
 import { useInViewport } from "@mantine/hooks";
 import { useCvStore } from "@/stores/cvStore";
+import { CvTypeProps } from "../../../public/cv";
 
-export const Banner = () => {
+export const Banner = ({data}:CvTypeProps) => {
   const { ref, inViewport } = useInViewport<HTMLDivElement>();
   return (
     <section
@@ -21,7 +22,7 @@ export const Banner = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-12">
           <div className=" col-span-12 md:col-span-6 xl:col-span-7">
-            <BannerText />
+            <BannerText data={data} />
           </div>
           <div className=" col-span-12 md:col-span-6 xl:col-span-5">
             {/* <img src={headerImg} alt="Header Img" /> */}
@@ -37,8 +38,7 @@ export const Banner = () => {
   );
 };
 
-function BannerText() {
-  const { isLoading, data } = useCvStore();
+function BannerText({data}:CvTypeProps) {
   return (
     <section className="">
       <div className=" mx-auto p-4 ">
@@ -56,19 +56,22 @@ function BannerText() {
               texts={data?.sections.hero.head.descriptions || []}
             />
           </div>
-          <p className="mx-auto max-w-lg sm:text-xl/relaxed">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-            illo tenetur fuga ducimus numquam ea!
+            {data.sections.hero.descriptions.map(description=>{
+				return <p key={description} className="mx-auto max-w-lg sm:text-xl/relaxed">
+					{description}
           </p>
+			})}
           <div className=" mt-8 flex flex-wrap gap-4 text-center justify-center">
             <a
-              href="#"
+              href={data?.cvPdf}
+			  download
               className="block w-full rounded bg-purple-500 px-12 py-3 text-sm font-medium text-forground shadow focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             >
               Télécharger CV
             </a>
             <a
-              href="#"
+              href={data?.account.github}
+			  target="_blank"
               className="block w-full rounded bg-primary text-primary-foreground px-12 py-3 text-sm font-medium shadow  focus:outline-none focus:ring sm:w-auto"
             >
               Mon compte Github

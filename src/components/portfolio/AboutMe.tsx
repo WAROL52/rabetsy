@@ -1,35 +1,26 @@
 "use client";
 
+import { CvTypeProps } from "../../../public/cv";
 import { TracingBeam } from "../ui/tracing-beam";
 import { Resume } from "./Resume";
 
 export type AboutMeProps = {
   children: React.ReactNode;
-};
+}&CvTypeProps;
 
-export function AboutMe({ children }: AboutMeProps) {
+export function AboutMe({ children,data }: AboutMeProps) {
   return (
     <div>
       <div>
-        <h1 className="text-4xl font-bold">Hello, I'm Warol52</h1>
-        <p className="text-lg mt-2">
-          I'm a web developer and designer based in the UK.
-        </p>
+        <h1 className="text-4xl font-bold">
+						  {data.sections.aboutMe.title}
+		</h1>
+        {data.sections.aboutMe.descriptions.map((description, index) => (
+		  <p key={index} className="text-lg ">
+			{description}
+		  </p>
+		))}
       </div>
-      <p>Hello, I'm Warol52</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-        deserunt tempore suscipit quidem totam architecto. Laudantium
-        blanditiis, odio consequuntur ab deserunt excepturi praesentium, quis
-        dicta, eligendi tempore aliquam natus error repellendus recusandae
-        asperiores vel aperiam quaerat reiciendis velit pariatur? Eligendi,
-        officia. Ratione, soluta fugiat sit, atque repellendus ab magni enim,
-        iusto neque aliquam reiciendis earum minima. Adipisci recusandae iusto
-        maxime quam totam odio quo, quia quaerat doloremque eaque similique
-        cupiditate est omnis optio ab. Veniam quibusdam nihil animi, expedita,
-        voluptate iure pariatur vitae at velit inventore modi rem neque dolore?
-        Asperiores aut incidunt explicabo harum eaque magnam esse placeat rem.
-      </p>
       {children}
     </div>
   );
