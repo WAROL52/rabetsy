@@ -1,0 +1,994 @@
+/* Theme name visibility classes */
+.gitmap-theme-name { display: none; }
+[data-gitmap-theme="github"] .gitmap-theme-name-github { display: inline; }
+[data-gitmap-theme="halloween"] .gitmap-theme-name-halloween { display: inline; }
+[data-gitmap-theme="winter"] .gitmap-theme-name-winter { display: inline; }
+[data-gitmap-theme="ocean"] .gitmap-theme-name-ocean { display: inline; }
+[data-gitmap-theme="sunset"] .gitmap-theme-name-sunset { display: inline; }
+[data-gitmap-theme="forest"] .gitmap-theme-name-forest { display: inline; }
+[data-gitmap-theme="lavender"] .gitmap-theme-name-lavender { display: inline; }
+[data-gitmap-theme="cherry"] .gitmap-theme-name-cherry { display: inline; }
+[data-gitmap-theme="mint"] .gitmap-theme-name-mint { display: inline; }
+[data-gitmap-theme="coral"] .gitmap-theme-name-coral { display: inline; }
+[data-gitmap-theme="slate"] .gitmap-theme-name-slate { display: inline; }
+[data-gitmap-theme="gold"] .gitmap-theme-name-gold { display: inline; }
+[data-gitmap-theme="neon"] .gitmap-theme-name-neon { display: inline; }
+[data-gitmap-theme="rose"] .gitmap-theme-name-rose { display: inline; }
+
+/* Heatmap Theme CSS Variables */
+
+:root {
+  /* Prism code highlighting (light) */
+  --prism-plain: #24292f;
+  --prism-comment: #6e7781;
+  --prism-string: #0a3069;
+  --prism-keyword: #cf222e;
+  --prism-function: #8250df;
+  --prism-number: #0550ae;
+  --prism-operator: #24292f;
+  --prism-tag: #116329;
+  --prism-attr-name: #0550ae;
+  --prism-attr-value: #0a3069;
+  --prism-punctuation: #24292f;
+  --prism-class-name: #953800;
+  --prism-inserted: #116329;
+  --prism-deleted: #82071e;
+
+  /* GitHub (default) - these are the generic variables used by components */
+  --gitmap-empty: #ebedf0;
+  --gitmap-level-1: #9be9a8;
+  --gitmap-level-2: #40c463;
+  --gitmap-level-3: #30a14e;
+  --gitmap-level-4: #216e39;
+
+  /* GitHub theme-specific (same as default) */
+  --gitmap-github-empty: #ebedf0;
+  --gitmap-github-level-1: #9be9a8;
+  --gitmap-github-level-2: #40c463;
+  --gitmap-github-level-3: #30a14e;
+  --gitmap-github-level-4: #216e39;
+
+  /* Halloween */
+  --gitmap-halloween-empty: #ebedf0;
+  --gitmap-halloween-level-1: #ffee4a;
+  --gitmap-halloween-level-2: #ffc501;
+  --gitmap-halloween-level-3: #fe9600;
+  --gitmap-halloween-level-4: #03001c;
+
+  /* Winter */
+  --gitmap-winter-empty: #ebedf0;
+  --gitmap-winter-level-1: #b6e3ff;
+  --gitmap-winter-level-2: #54aeff;
+  --gitmap-winter-level-3: #0969da;
+  --gitmap-winter-level-4: #0a3069;
+
+  /* Ocean */
+  --gitmap-ocean-empty: #ebedf0;
+  --gitmap-ocean-level-1: #a8dadc;
+  --gitmap-ocean-level-2: #457b9d;
+  --gitmap-ocean-level-3: #1d3557;
+  --gitmap-ocean-level-4: #0d1b2a;
+
+  /* Sunset */
+  --gitmap-sunset-empty: #ebedf0;
+  --gitmap-sunset-level-1: #ffcdb2;
+  --gitmap-sunset-level-2: #ffb4a2;
+  --gitmap-sunset-level-3: #e5989b;
+  --gitmap-sunset-level-4: #b5838d;
+
+  /* Forest */
+  --gitmap-forest-empty: #ebedf0;
+  --gitmap-forest-level-1: #d8f3dc;
+  --gitmap-forest-level-2: #95d5b2;
+  --gitmap-forest-level-3: #52b788;
+  --gitmap-forest-level-4: #1b4332;
+
+  /* Lavender */
+  --gitmap-lavender-empty: #ebedf0;
+  --gitmap-lavender-level-1: #e2d9f3;
+  --gitmap-lavender-level-2: #c9b8e8;
+  --gitmap-lavender-level-3: #9b72cf;
+  --gitmap-lavender-level-4: #6b21a8;
+
+  /* Cherry */
+  --gitmap-cherry-empty: #ebedf0;
+  --gitmap-cherry-level-1: #ffc6c7;
+  --gitmap-cherry-level-2: #ff8a8a;
+  --gitmap-cherry-level-3: #e63946;
+  --gitmap-cherry-level-4: #9d0208;
+
+  /* Mint */
+  --gitmap-mint-empty: #ebedf0;
+  --gitmap-mint-level-1: #d0f4de;
+  --gitmap-mint-level-2: #a7e8bd;
+  --gitmap-mint-level-3: #57cc99;
+  --gitmap-mint-level-4: #22577a;
+
+  /* Coral */
+  --gitmap-coral-empty: #ebedf0;
+  --gitmap-coral-level-1: #ffd6ba;
+  --gitmap-coral-level-2: #ffab91;
+  --gitmap-coral-level-3: #ff7043;
+  --gitmap-coral-level-4: #bf360c;
+
+  /* Slate */
+  --gitmap-slate-empty: #ebedf0;
+  --gitmap-slate-level-1: #cbd5e1;
+  --gitmap-slate-level-2: #94a3b8;
+  --gitmap-slate-level-3: #64748b;
+  --gitmap-slate-level-4: #1e293b;
+
+  /* Gold */
+  --gitmap-gold-empty: #ebedf0;
+  --gitmap-gold-level-1: #fef3c7;
+  --gitmap-gold-level-2: #fcd34d;
+  --gitmap-gold-level-3: #f59e0b;
+  --gitmap-gold-level-4: #92400e;
+
+  /* Neon */
+  --gitmap-neon-empty: #ebedf0;
+  --gitmap-neon-level-1: #d4f1f4;
+  --gitmap-neon-level-2: #75e6da;
+  --gitmap-neon-level-3: #05dfd7;
+  --gitmap-neon-level-4: #00a896;
+
+  /* Rose */
+  --gitmap-rose-empty: #ebedf0;
+  --gitmap-rose-level-1: #ffe4e6;
+  --gitmap-rose-level-2: #fda4af;
+  --gitmap-rose-level-3: #fb7185;
+  --gitmap-rose-level-4: #be123c;
+}
+
+/* Theme-specific remapping (light mode) */
+[data-gitmap-theme="github"] {
+  --gitmap-empty: var(--gitmap-github-empty);
+  --gitmap-level-1: var(--gitmap-github-level-1);
+  --gitmap-level-2: var(--gitmap-github-level-2);
+  --gitmap-level-3: var(--gitmap-github-level-3);
+  --gitmap-level-4: var(--gitmap-github-level-4);
+}
+
+[data-gitmap-theme="halloween"] {
+  --gitmap-empty: var(--gitmap-halloween-empty);
+  --gitmap-level-1: var(--gitmap-halloween-level-1);
+  --gitmap-level-2: var(--gitmap-halloween-level-2);
+  --gitmap-level-3: var(--gitmap-halloween-level-3);
+  --gitmap-level-4: var(--gitmap-halloween-level-4);
+}
+
+[data-gitmap-theme="winter"] {
+  --gitmap-empty: var(--gitmap-winter-empty);
+  --gitmap-level-1: var(--gitmap-winter-level-1);
+  --gitmap-level-2: var(--gitmap-winter-level-2);
+  --gitmap-level-3: var(--gitmap-winter-level-3);
+  --gitmap-level-4: var(--gitmap-winter-level-4);
+}
+
+[data-gitmap-theme="ocean"] {
+  --gitmap-empty: var(--gitmap-ocean-empty);
+  --gitmap-level-1: var(--gitmap-ocean-level-1);
+  --gitmap-level-2: var(--gitmap-ocean-level-2);
+  --gitmap-level-3: var(--gitmap-ocean-level-3);
+  --gitmap-level-4: var(--gitmap-ocean-level-4);
+}
+
+[data-gitmap-theme="sunset"] {
+  --gitmap-empty: var(--gitmap-sunset-empty);
+  --gitmap-level-1: var(--gitmap-sunset-level-1);
+  --gitmap-level-2: var(--gitmap-sunset-level-2);
+  --gitmap-level-3: var(--gitmap-sunset-level-3);
+  --gitmap-level-4: var(--gitmap-sunset-level-4);
+}
+
+[data-gitmap-theme="forest"] {
+  --gitmap-empty: var(--gitmap-forest-empty);
+  --gitmap-level-1: var(--gitmap-forest-level-1);
+  --gitmap-level-2: var(--gitmap-forest-level-2);
+  --gitmap-level-3: var(--gitmap-forest-level-3);
+  --gitmap-level-4: var(--gitmap-forest-level-4);
+}
+
+[data-gitmap-theme="lavender"] {
+  --gitmap-empty: var(--gitmap-lavender-empty);
+  --gitmap-level-1: var(--gitmap-lavender-level-1);
+  --gitmap-level-2: var(--gitmap-lavender-level-2);
+  --gitmap-level-3: var(--gitmap-lavender-level-3);
+  --gitmap-level-4: var(--gitmap-lavender-level-4);
+}
+
+[data-gitmap-theme="cherry"] {
+  --gitmap-empty: var(--gitmap-cherry-empty);
+  --gitmap-level-1: var(--gitmap-cherry-level-1);
+  --gitmap-level-2: var(--gitmap-cherry-level-2);
+  --gitmap-level-3: var(--gitmap-cherry-level-3);
+  --gitmap-level-4: var(--gitmap-cherry-level-4);
+}
+
+[data-gitmap-theme="mint"] {
+  --gitmap-empty: var(--gitmap-mint-empty);
+  --gitmap-level-1: var(--gitmap-mint-level-1);
+  --gitmap-level-2: var(--gitmap-mint-level-2);
+  --gitmap-level-3: var(--gitmap-mint-level-3);
+  --gitmap-level-4: var(--gitmap-mint-level-4);
+}
+
+[data-gitmap-theme="coral"] {
+  --gitmap-empty: var(--gitmap-coral-empty);
+  --gitmap-level-1: var(--gitmap-coral-level-1);
+  --gitmap-level-2: var(--gitmap-coral-level-2);
+  --gitmap-level-3: var(--gitmap-coral-level-3);
+  --gitmap-level-4: var(--gitmap-coral-level-4);
+}
+
+[data-gitmap-theme="slate"] {
+  --gitmap-empty: var(--gitmap-slate-empty);
+  --gitmap-level-1: var(--gitmap-slate-level-1);
+  --gitmap-level-2: var(--gitmap-slate-level-2);
+  --gitmap-level-3: var(--gitmap-slate-level-3);
+  --gitmap-level-4: var(--gitmap-slate-level-4);
+}
+
+[data-gitmap-theme="gold"] {
+  --gitmap-empty: var(--gitmap-gold-empty);
+  --gitmap-level-1: var(--gitmap-gold-level-1);
+  --gitmap-level-2: var(--gitmap-gold-level-2);
+  --gitmap-level-3: var(--gitmap-gold-level-3);
+  --gitmap-level-4: var(--gitmap-gold-level-4);
+}
+
+[data-gitmap-theme="neon"] {
+  --gitmap-empty: var(--gitmap-neon-empty);
+  --gitmap-level-1: var(--gitmap-neon-level-1);
+  --gitmap-level-2: var(--gitmap-neon-level-2);
+  --gitmap-level-3: var(--gitmap-neon-level-3);
+  --gitmap-level-4: var(--gitmap-neon-level-4);
+}
+
+[data-gitmap-theme="rose"] {
+  --gitmap-empty: var(--gitmap-rose-empty);
+  --gitmap-level-1: var(--gitmap-rose-level-1);
+  --gitmap-level-2: var(--gitmap-rose-level-2);
+  --gitmap-level-3: var(--gitmap-rose-level-3);
+  --gitmap-level-4: var(--gitmap-rose-level-4);
+}
+
+[data-gitmap-theme="github"] {
+  --prism-plain: #24292f;
+  --prism-comment: #6e7781;
+  --prism-string: #0a3069;
+  --prism-keyword: #cf222e;
+  --prism-function: #8250df;
+  --prism-number: #0550ae;
+  --prism-operator: #24292f;
+  --prism-tag: #116329;
+  --prism-attr-name: #0550ae;
+  --prism-attr-value: #0a3069;
+  --prism-punctuation: #24292f;
+  --prism-class-name: #953800;
+  --prism-inserted: #116329;
+  --prism-deleted: #82071e;
+}
+
+[data-gitmap-theme="halloween"] {
+  --prism-plain: #2d1f00;
+  --prism-comment: #7c6f5a;
+  --prism-string: #854d0e;
+  --prism-keyword: #b45309;
+  --prism-function: #9a3412;
+  --prism-number: #c2410c;
+  --prism-operator: #2d1f00;
+  --prism-tag: #ea580c;
+  --prism-attr-name: #d97706;
+  --prism-attr-value: #854d0e;
+  --prism-punctuation: #2d1f00;
+  --prism-class-name: #b45309;
+  --prism-inserted: #65a30d;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="winter"] {
+  --prism-plain: #1e3a5f;
+  --prism-comment: #64748b;
+  --prism-string: #0369a1;
+  --prism-keyword: #0c4a6e;
+  --prism-function: #0284c7;
+  --prism-number: #0e7490;
+  --prism-operator: #1e3a5f;
+  --prism-tag: #0969da;
+  --prism-attr-name: #0284c7;
+  --prism-attr-value: #0369a1;
+  --prism-punctuation: #1e3a5f;
+  --prism-class-name: #0a3069;
+  --prism-inserted: #059669;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="ocean"] {
+  --prism-plain: #1d3557;
+  --prism-comment: #64748b;
+  --prism-string: #0d9488;
+  --prism-keyword: #1d3557;
+  --prism-function: #457b9d;
+  --prism-number: #0891b2;
+  --prism-operator: #1d3557;
+  --prism-tag: #0f766e;
+  --prism-attr-name: #457b9d;
+  --prism-attr-value: #0d9488;
+  --prism-punctuation: #1d3557;
+  --prism-class-name: #0d1b2a;
+  --prism-inserted: #059669;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="sunset"] {
+  --prism-plain: #4a2c2a;
+  --prism-comment: #9ca3af;
+  --prism-string: #be185d;
+  --prism-keyword: #b5838d;
+  --prism-function: #e5989b;
+  --prism-number: #db2777;
+  --prism-operator: #4a2c2a;
+  --prism-tag: #9d174d;
+  --prism-attr-name: #e5989b;
+  --prism-attr-value: #be185d;
+  --prism-punctuation: #4a2c2a;
+  --prism-class-name: #b5838d;
+  --prism-inserted: #059669;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="forest"] {
+  --prism-plain: #1b4332;
+  --prism-comment: #6b7280;
+  --prism-string: #166534;
+  --prism-keyword: #15803d;
+  --prism-function: #16a34a;
+  --prism-number: #059669;
+  --prism-operator: #1b4332;
+  --prism-tag: #22c55e;
+  --prism-attr-name: #16a34a;
+  --prism-attr-value: #166534;
+  --prism-punctuation: #1b4332;
+  --prism-class-name: #14532d;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="lavender"] {
+  --prism-plain: #3b0764;
+  --prism-comment: #9ca3af;
+  --prism-string: #7c3aed;
+  --prism-keyword: #6b21a8;
+  --prism-function: #9b72cf;
+  --prism-number: #8b5cf6;
+  --prism-operator: #3b0764;
+  --prism-tag: #a855f7;
+  --prism-attr-name: #9b72cf;
+  --prism-attr-value: #7c3aed;
+  --prism-punctuation: #3b0764;
+  --prism-class-name: #581c87;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="cherry"] {
+  --prism-plain: #450a0a;
+  --prism-comment: #9ca3af;
+  --prism-string: #b91c1c;
+  --prism-keyword: #dc2626;
+  --prism-function: #e63946;
+  --prism-number: #ef4444;
+  --prism-operator: #450a0a;
+  --prism-tag: #f87171;
+  --prism-attr-name: #e63946;
+  --prism-attr-value: #b91c1c;
+  --prism-punctuation: #450a0a;
+  --prism-class-name: #9d0208;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="mint"] {
+  --prism-plain: #115e59;
+  --prism-comment: #6b7280;
+  --prism-string: #0d9488;
+  --prism-keyword: #14b8a6;
+  --prism-function: #57cc99;
+  --prism-number: #10b981;
+  --prism-operator: #115e59;
+  --prism-tag: #2dd4bf;
+  --prism-attr-name: #57cc99;
+  --prism-attr-value: #0d9488;
+  --prism-punctuation: #115e59;
+  --prism-class-name: #22577a;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="coral"] {
+  --prism-plain: #7c2d12;
+  --prism-comment: #9ca3af;
+  --prism-string: #c2410c;
+  --prism-keyword: #ea580c;
+  --prism-function: #ff7043;
+  --prism-number: #f97316;
+  --prism-operator: #7c2d12;
+  --prism-tag: #fb923c;
+  --prism-attr-name: #ff7043;
+  --prism-attr-value: #c2410c;
+  --prism-punctuation: #7c2d12;
+  --prism-class-name: #bf360c;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="slate"] {
+  --prism-plain: #1e293b;
+  --prism-comment: #94a3b8;
+  --prism-string: #475569;
+  --prism-keyword: #334155;
+  --prism-function: #64748b;
+  --prism-number: #475569;
+  --prism-operator: #1e293b;
+  --prism-tag: #334155;
+  --prism-attr-name: #64748b;
+  --prism-attr-value: #475569;
+  --prism-punctuation: #1e293b;
+  --prism-class-name: #0f172a;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="gold"] {
+  --prism-plain: #78350f;
+  --prism-comment: #9ca3af;
+  --prism-string: #92400e;
+  --prism-keyword: #b45309;
+  --prism-function: #d97706;
+  --prism-number: #ca8a04;
+  --prism-operator: #78350f;
+  --prism-tag: #eab308;
+  --prism-attr-name: #d97706;
+  --prism-attr-value: #92400e;
+  --prism-punctuation: #78350f;
+  --prism-class-name: #854d0e;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="neon"] {
+  --prism-plain: #134e4a;
+  --prism-comment: #6b7280;
+  --prism-string: #0d9488;
+  --prism-keyword: #0891b2;
+  --prism-function: #06b6d4;
+  --prism-number: #14b8a6;
+  --prism-operator: #134e4a;
+  --prism-tag: #22d3d4;
+  --prism-attr-name: #06b6d4;
+  --prism-attr-value: #0d9488;
+  --prism-punctuation: #134e4a;
+  --prism-class-name: #00a896;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+[data-gitmap-theme="rose"] {
+  --prism-plain: #881337;
+  --prism-comment: #9ca3af;
+  --prism-string: #be123c;
+  --prism-keyword: #e11d48;
+  --prism-function: #f43f5e;
+  --prism-number: #fb7185;
+  --prism-operator: #881337;
+  --prism-tag: #fb7185;
+  --prism-attr-name: #f43f5e;
+  --prism-attr-value: #be123c;
+  --prism-punctuation: #881337;
+  --prism-class-name: #9f1239;
+  --prism-inserted: #22c55e;
+  --prism-deleted: #dc2626;
+}
+
+.dark {
+  /* Prism code highlighting (dark) */
+  --prism-plain: #c9d1d9;
+  --prism-comment: #8b949e;
+  --prism-string: #a5d6ff;
+  --prism-keyword: #ff7b72;
+  --prism-function: #d2a8ff;
+  --prism-number: #79c0ff;
+  --prism-operator: #c9d1d9;
+  --prism-tag: #7ee787;
+  --prism-attr-name: #79c0ff;
+  --prism-attr-value: #a5d6ff;
+  --prism-punctuation: #c9d1d9;
+  --prism-class-name: #ffa657;
+  --prism-inserted: #aff5b4;
+  --prism-deleted: #ffa198;
+
+  /* GitHub (dark) - these are the generic variables used by components */
+  --gitmap-empty: #161b22;
+  --gitmap-level-1: #0e4429;
+  --gitmap-level-2: #006d32;
+  --gitmap-level-3: #26a641;
+  --gitmap-level-4: #39d353;
+
+  /* GitHub theme-specific (dark) */
+  --gitmap-github-empty: #161b22;
+  --gitmap-github-level-1: #0e4429;
+  --gitmap-github-level-2: #006d32;
+  --gitmap-github-level-3: #26a641;
+  --gitmap-github-level-4: #39d353;
+
+  /* Halloween (dark) */
+  --gitmap-halloween-empty: #161b22;
+  --gitmap-halloween-level-1: #631c03;
+  --gitmap-halloween-level-2: #bd561d;
+  --gitmap-halloween-level-3: #fa7a18;
+  --gitmap-halloween-level-4: #fddf68;
+
+  /* Winter (dark) */
+  --gitmap-winter-empty: #161b22;
+  --gitmap-winter-level-1: #0a3069;
+  --gitmap-winter-level-2: #0969da;
+  --gitmap-winter-level-3: #54aeff;
+  --gitmap-winter-level-4: #b6e3ff;
+
+  /* Ocean (dark) */
+  --gitmap-ocean-empty: #161b22;
+  --gitmap-ocean-level-1: #0d1b2a;
+  --gitmap-ocean-level-2: #1d3557;
+  --gitmap-ocean-level-3: #457b9d;
+  --gitmap-ocean-level-4: #a8dadc;
+
+  /* Sunset (dark) */
+  --gitmap-sunset-empty: #161b22;
+  --gitmap-sunset-level-1: #6d2932;
+  --gitmap-sunset-level-2: #b5838d;
+  --gitmap-sunset-level-3: #e5989b;
+  --gitmap-sunset-level-4: #ffcdb2;
+
+  /* Forest (dark) */
+  --gitmap-forest-empty: #161b22;
+  --gitmap-forest-level-1: #1b4332;
+  --gitmap-forest-level-2: #2d6a4f;
+  --gitmap-forest-level-3: #52b788;
+  --gitmap-forest-level-4: #95d5b2;
+
+  /* Lavender (dark) */
+  --gitmap-lavender-empty: #161b22;
+  --gitmap-lavender-level-1: #3b0764;
+  --gitmap-lavender-level-2: #6b21a8;
+  --gitmap-lavender-level-3: #9b72cf;
+  --gitmap-lavender-level-4: #c9b8e8;
+
+  /* Cherry (dark) */
+  --gitmap-cherry-empty: #161b22;
+  --gitmap-cherry-level-1: #450a0a;
+  --gitmap-cherry-level-2: #9d0208;
+  --gitmap-cherry-level-3: #e63946;
+  --gitmap-cherry-level-4: #ffc6c7;
+
+  /* Mint (dark) */
+  --gitmap-mint-empty: #161b22;
+  --gitmap-mint-level-1: #22577a;
+  --gitmap-mint-level-2: #38a3a5;
+  --gitmap-mint-level-3: #57cc99;
+  --gitmap-mint-level-4: #a7e8bd;
+
+  /* Coral (dark) */
+  --gitmap-coral-empty: #161b22;
+  --gitmap-coral-level-1: #5c2300;
+  --gitmap-coral-level-2: #bf360c;
+  --gitmap-coral-level-3: #ff7043;
+  --gitmap-coral-level-4: #ffab91;
+
+  /* Slate (dark) */
+  --gitmap-slate-empty: #161b22;
+  --gitmap-slate-level-1: #1e293b;
+  --gitmap-slate-level-2: #475569;
+  --gitmap-slate-level-3: #94a3b8;
+  --gitmap-slate-level-4: #cbd5e1;
+
+  /* Gold (dark) */
+  --gitmap-gold-empty: #161b22;
+  --gitmap-gold-level-1: #451a03;
+  --gitmap-gold-level-2: #92400e;
+  --gitmap-gold-level-3: #f59e0b;
+  --gitmap-gold-level-4: #fcd34d;
+
+  /* Neon (dark) */
+  --gitmap-neon-empty: #161b22;
+  --gitmap-neon-level-1: #004d4d;
+  --gitmap-neon-level-2: #00a896;
+  --gitmap-neon-level-3: #05dfd7;
+  --gitmap-neon-level-4: #75e6da;
+
+  /* Rose (dark) */
+  --gitmap-rose-empty: #161b22;
+  --gitmap-rose-level-1: #4c0519;
+  --gitmap-rose-level-2: #9f1239;
+  --gitmap-rose-level-3: #fb7185;
+  --gitmap-rose-level-4: #fda4af;
+}
+
+/* Theme-specific remapping (dark mode) */
+.dark[data-gitmap-theme="github"],
+.dark [data-gitmap-theme="github"] {
+  --gitmap-empty: var(--gitmap-github-empty);
+  --gitmap-level-1: var(--gitmap-github-level-1);
+  --gitmap-level-2: var(--gitmap-github-level-2);
+  --gitmap-level-3: var(--gitmap-github-level-3);
+  --gitmap-level-4: var(--gitmap-github-level-4);
+}
+
+.dark[data-gitmap-theme="halloween"],
+.dark [data-gitmap-theme="halloween"] {
+  --gitmap-empty: var(--gitmap-halloween-empty);
+  --gitmap-level-1: var(--gitmap-halloween-level-1);
+  --gitmap-level-2: var(--gitmap-halloween-level-2);
+  --gitmap-level-3: var(--gitmap-halloween-level-3);
+  --gitmap-level-4: var(--gitmap-halloween-level-4);
+}
+
+.dark[data-gitmap-theme="winter"],
+.dark [data-gitmap-theme="winter"] {
+  --gitmap-empty: var(--gitmap-winter-empty);
+  --gitmap-level-1: var(--gitmap-winter-level-1);
+  --gitmap-level-2: var(--gitmap-winter-level-2);
+  --gitmap-level-3: var(--gitmap-winter-level-3);
+  --gitmap-level-4: var(--gitmap-winter-level-4);
+}
+
+.dark[data-gitmap-theme="ocean"],
+.dark [data-gitmap-theme="ocean"] {
+  --gitmap-empty: var(--gitmap-ocean-empty);
+  --gitmap-level-1: var(--gitmap-ocean-level-1);
+  --gitmap-level-2: var(--gitmap-ocean-level-2);
+  --gitmap-level-3: var(--gitmap-ocean-level-3);
+  --gitmap-level-4: var(--gitmap-ocean-level-4);
+}
+
+.dark[data-gitmap-theme="sunset"],
+.dark [data-gitmap-theme="sunset"] {
+  --gitmap-empty: var(--gitmap-sunset-empty);
+  --gitmap-level-1: var(--gitmap-sunset-level-1);
+  --gitmap-level-2: var(--gitmap-sunset-level-2);
+  --gitmap-level-3: var(--gitmap-sunset-level-3);
+  --gitmap-level-4: var(--gitmap-sunset-level-4);
+}
+
+.dark[data-gitmap-theme="forest"],
+.dark [data-gitmap-theme="forest"] {
+  --gitmap-empty: var(--gitmap-forest-empty);
+  --gitmap-level-1: var(--gitmap-forest-level-1);
+  --gitmap-level-2: var(--gitmap-forest-level-2);
+  --gitmap-level-3: var(--gitmap-forest-level-3);
+  --gitmap-level-4: var(--gitmap-forest-level-4);
+}
+
+.dark[data-gitmap-theme="lavender"],
+.dark [data-gitmap-theme="lavender"] {
+  --gitmap-empty: var(--gitmap-lavender-empty);
+  --gitmap-level-1: var(--gitmap-lavender-level-1);
+  --gitmap-level-2: var(--gitmap-lavender-level-2);
+  --gitmap-level-3: var(--gitmap-lavender-level-3);
+  --gitmap-level-4: var(--gitmap-lavender-level-4);
+}
+
+.dark[data-gitmap-theme="cherry"],
+.dark [data-gitmap-theme="cherry"] {
+  --gitmap-empty: var(--gitmap-cherry-empty);
+  --gitmap-level-1: var(--gitmap-cherry-level-1);
+  --gitmap-level-2: var(--gitmap-cherry-level-2);
+  --gitmap-level-3: var(--gitmap-cherry-level-3);
+  --gitmap-level-4: var(--gitmap-cherry-level-4);
+}
+
+.dark[data-gitmap-theme="mint"],
+.dark [data-gitmap-theme="mint"] {
+  --gitmap-empty: var(--gitmap-mint-empty);
+  --gitmap-level-1: var(--gitmap-mint-level-1);
+  --gitmap-level-2: var(--gitmap-mint-level-2);
+  --gitmap-level-3: var(--gitmap-mint-level-3);
+  --gitmap-level-4: var(--gitmap-mint-level-4);
+}
+
+.dark[data-gitmap-theme="coral"],
+.dark [data-gitmap-theme="coral"] {
+  --gitmap-empty: var(--gitmap-coral-empty);
+  --gitmap-level-1: var(--gitmap-coral-level-1);
+  --gitmap-level-2: var(--gitmap-coral-level-2);
+  --gitmap-level-3: var(--gitmap-coral-level-3);
+  --gitmap-level-4: var(--gitmap-coral-level-4);
+}
+
+.dark[data-gitmap-theme="slate"],
+.dark [data-gitmap-theme="slate"] {
+  --gitmap-empty: var(--gitmap-slate-empty);
+  --gitmap-level-1: var(--gitmap-slate-level-1);
+  --gitmap-level-2: var(--gitmap-slate-level-2);
+  --gitmap-level-3: var(--gitmap-slate-level-3);
+  --gitmap-level-4: var(--gitmap-slate-level-4);
+}
+
+.dark[data-gitmap-theme="gold"],
+.dark [data-gitmap-theme="gold"] {
+  --gitmap-empty: var(--gitmap-gold-empty);
+  --gitmap-level-1: var(--gitmap-gold-level-1);
+  --gitmap-level-2: var(--gitmap-gold-level-2);
+  --gitmap-level-3: var(--gitmap-gold-level-3);
+  --gitmap-level-4: var(--gitmap-gold-level-4);
+}
+
+.dark[data-gitmap-theme="neon"],
+.dark [data-gitmap-theme="neon"] {
+  --gitmap-empty: var(--gitmap-neon-empty);
+  --gitmap-level-1: var(--gitmap-neon-level-1);
+  --gitmap-level-2: var(--gitmap-neon-level-2);
+  --gitmap-level-3: var(--gitmap-neon-level-3);
+  --gitmap-level-4: var(--gitmap-neon-level-4);
+}
+
+.dark[data-gitmap-theme="rose"],
+.dark [data-gitmap-theme="rose"] {
+  --gitmap-empty: var(--gitmap-rose-empty);
+  --gitmap-level-1: var(--gitmap-rose-level-1);
+  --gitmap-level-2: var(--gitmap-rose-level-2);
+  --gitmap-level-3: var(--gitmap-rose-level-3);
+  --gitmap-level-4: var(--gitmap-rose-level-4);
+}
+
+.dark[data-gitmap-theme="github"],
+.dark [data-gitmap-theme="github"] {
+  --prism-plain: #c9d1d9;
+  --prism-comment: #8b949e;
+  --prism-string: #a5d6ff;
+  --prism-keyword: #ff7b72;
+  --prism-function: #d2a8ff;
+  --prism-number: #79c0ff;
+  --prism-operator: #c9d1d9;
+  --prism-tag: #7ee787;
+  --prism-attr-name: #79c0ff;
+  --prism-attr-value: #a5d6ff;
+  --prism-punctuation: #c9d1d9;
+  --prism-class-name: #ffa657;
+  --prism-inserted: #aff5b4;
+  --prism-deleted: #ffa198;
+}
+
+.dark[data-gitmap-theme="halloween"],
+.dark [data-gitmap-theme="halloween"] {
+  --prism-plain: #fef3c7;
+  --prism-comment: #a8977a;
+  --prism-string: #fddf68;
+  --prism-keyword: #fa7a18;
+  --prism-function: #ffc501;
+  --prism-number: #ffee4a;
+  --prism-operator: #fef3c7;
+  --prism-tag: #fe9600;
+  --prism-attr-name: #ffc501;
+  --prism-attr-value: #fddf68;
+  --prism-punctuation: #d4c4a8;
+  --prism-class-name: #ffee4a;
+  --prism-inserted: #a3e635;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="winter"],
+.dark [data-gitmap-theme="winter"] {
+  --prism-plain: #e0f2fe;
+  --prism-comment: #7dd3fc;
+  --prism-string: #b6e3ff;
+  --prism-keyword: #54aeff;
+  --prism-function: #38bdf8;
+  --prism-number: #7dd3fc;
+  --prism-operator: #e0f2fe;
+  --prism-tag: #0ea5e9;
+  --prism-attr-name: #38bdf8;
+  --prism-attr-value: #b6e3ff;
+  --prism-punctuation: #bae6fd;
+  --prism-class-name: #b6e3ff;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="ocean"],
+.dark [data-gitmap-theme="ocean"] {
+  --prism-plain: #a8dadc;
+  --prism-comment: #5eead4;
+  --prism-string: #99f6e4;
+  --prism-keyword: #5eead4;
+  --prism-function: #67e8f9;
+  --prism-number: #a8dadc;
+  --prism-operator: #a8dadc;
+  --prism-tag: #2dd4bf;
+  --prism-attr-name: #67e8f9;
+  --prism-attr-value: #99f6e4;
+  --prism-punctuation: #94a3b8;
+  --prism-class-name: #a8dadc;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="sunset"],
+.dark [data-gitmap-theme="sunset"] {
+  --prism-plain: #ffcdb2;
+  --prism-comment: #f9a8d4;
+  --prism-string: #fda4af;
+  --prism-keyword: #f472b6;
+  --prism-function: #e5989b;
+  --prism-number: #fb7185;
+  --prism-operator: #ffcdb2;
+  --prism-tag: #f472b6;
+  --prism-attr-name: #e5989b;
+  --prism-attr-value: #fda4af;
+  --prism-punctuation: #d4a5a5;
+  --prism-class-name: #ffb4a2;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="forest"],
+.dark [data-gitmap-theme="forest"] {
+  --prism-plain: #d8f3dc;
+  --prism-comment: #86efac;
+  --prism-string: #bbf7d0;
+  --prism-keyword: #4ade80;
+  --prism-function: #52b788;
+  --prism-number: #95d5b2;
+  --prism-operator: #d8f3dc;
+  --prism-tag: #34d399;
+  --prism-attr-name: #52b788;
+  --prism-attr-value: #bbf7d0;
+  --prism-punctuation: #a7d7a7;
+  --prism-class-name: #95d5b2;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="lavender"],
+.dark [data-gitmap-theme="lavender"] {
+  --prism-plain: #e2d9f3;
+  --prism-comment: #d8b4fe;
+  --prism-string: #e9d5ff;
+  --prism-keyword: #c4b5fd;
+  --prism-function: #9b72cf;
+  --prism-number: #c9b8e8;
+  --prism-operator: #e2d9f3;
+  --prism-tag: #a78bfa;
+  --prism-attr-name: #9b72cf;
+  --prism-attr-value: #e9d5ff;
+  --prism-punctuation: #c4b5e0;
+  --prism-class-name: #c9b8e8;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="cherry"],
+.dark [data-gitmap-theme="cherry"] {
+  --prism-plain: #ffc6c7;
+  --prism-comment: #fca5a5;
+  --prism-string: #fecaca;
+  --prism-keyword: #fb7185;
+  --prism-function: #e63946;
+  --prism-number: #f87171;
+  --prism-operator: #ffc6c7;
+  --prism-tag: #f87171;
+  --prism-attr-name: #e63946;
+  --prism-attr-value: #fecaca;
+  --prism-punctuation: #d4a5a5;
+  --prism-class-name: #ff8a8a;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="mint"],
+.dark [data-gitmap-theme="mint"] {
+  --prism-plain: #d0f4de;
+  --prism-comment: #5eead4;
+  --prism-string: #99f6e4;
+  --prism-keyword: #2dd4bf;
+  --prism-function: #57cc99;
+  --prism-number: #a7e8bd;
+  --prism-operator: #d0f4de;
+  --prism-tag: #34d399;
+  --prism-attr-name: #57cc99;
+  --prism-attr-value: #99f6e4;
+  --prism-punctuation: #a7d7c7;
+  --prism-class-name: #a7e8bd;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="coral"],
+.dark [data-gitmap-theme="coral"] {
+  --prism-plain: #ffd6ba;
+  --prism-comment: #fdba74;
+  --prism-string: #fed7aa;
+  --prism-keyword: #fb923c;
+  --prism-function: #ff7043;
+  --prism-number: #ffab91;
+  --prism-operator: #ffd6ba;
+  --prism-tag: #f97316;
+  --prism-attr-name: #ff7043;
+  --prism-attr-value: #fed7aa;
+  --prism-punctuation: #d4b5a5;
+  --prism-class-name: #ffab91;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="slate"],
+.dark [data-gitmap-theme="slate"] {
+  --prism-plain: #e2e8f0;
+  --prism-comment: #94a3b8;
+  --prism-string: #cbd5e1;
+  --prism-keyword: #94a3b8;
+  --prism-function: #64748b;
+  --prism-number: #cbd5e1;
+  --prism-operator: #e2e8f0;
+  --prism-tag: #64748b;
+  --prism-attr-name: #94a3b8;
+  --prism-attr-value: #cbd5e1;
+  --prism-punctuation: #94a3b8;
+  --prism-class-name: #cbd5e1;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="gold"],
+.dark [data-gitmap-theme="gold"] {
+  --prism-plain: #fef3c7;
+  --prism-comment: #fcd34d;
+  --prism-string: #fde68a;
+  --prism-keyword: #fbbf24;
+  --prism-function: #f59e0b;
+  --prism-number: #fcd34d;
+  --prism-operator: #fef3c7;
+  --prism-tag: #f59e0b;
+  --prism-attr-name: #fbbf24;
+  --prism-attr-value: #fde68a;
+  --prism-punctuation: #d4c4a8;
+  --prism-class-name: #fcd34d;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="neon"],
+.dark [data-gitmap-theme="neon"] {
+  --prism-plain: #d4f1f4;
+  --prism-comment: #5eead4;
+  --prism-string: #99f6e4;
+  --prism-keyword: #22d3ee;
+  --prism-function: #05dfd7;
+  --prism-number: #75e6da;
+  --prism-operator: #d4f1f4;
+  --prism-tag: #2dd4bf;
+  --prism-attr-name: #05dfd7;
+  --prism-attr-value: #99f6e4;
+  --prism-punctuation: #a7d7d7;
+  --prism-class-name: #75e6da;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
+
+.dark[data-gitmap-theme="rose"],
+.dark [data-gitmap-theme="rose"] {
+  --prism-plain: #ffe4e6;
+  --prism-comment: #fda4af;
+  --prism-string: #fecdd3;
+  --prism-keyword: #fb7185;
+  --prism-function: #f43f5e;
+  --prism-number: #fda4af;
+  --prism-operator: #ffe4e6;
+  --prism-tag: #fb7185;
+  --prism-attr-name: #f43f5e;
+  --prism-attr-value: #fecdd3;
+  --prism-punctuation: #d4a5a8;
+  --prism-class-name: #fda4af;
+  --prism-inserted: #4ade80;
+  --prism-deleted: #f87171;
+}
