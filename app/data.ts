@@ -25,7 +25,7 @@ export const portfolio = {
 	stats: {
 		uptime: "99.9%",
 		activeProjects: 6,
-		experience: "4+ YEARS",
+		experience: "5+ YEARS",
 	},
 
 	hero: {
@@ -66,8 +66,8 @@ export const portfolio = {
 				"HTTP server built from scratch in C++. Handles CGI, sockets, HTTP parsing and multiple client connections.",
 			tags: ["C++", "HTTP", "CGI", "Sockets", "Linux"],
 			image: "/projects/webserv.jpg",
-			link: "#",
-			repo: "#",
+			link: "https://warol52.github.io/42-webserv/",
+			repo: "https://github.com/WAROL52/42-webserv",
 		},
 		{
 			title: "Cub3D",
@@ -75,8 +75,8 @@ export const portfolio = {
 				"Raycasting engine inspired by Wolfenstein 3D with textures, collisions and optimized rendering.",
 			tags: ["C", "Raycasting", "Graphics", "Game Engine"],
 			image: "/projects/cub3d.jpg",
-			link: "#",
-			repo: "#",
+			link: "https://github.com/WAROL52/42-cub3d",
+			repo: "https://github.com/WAROL52/42-cub3d",
 		},
 		{
 			title: "Minishell",
@@ -84,17 +84,17 @@ export const portfolio = {
 				"Custom UNIX shell implementation with pipes, redirections and process management.",
 			tags: ["C", "Shell", "UNIX", "Processes"],
 			image: "/projects/minishell.jpg",
-			link: "#",
-			repo: "#",
+			link: "https://github.com/WAROL52/42-minishell",
+			repo: "https://github.com/WAROL52/42-minishell",
 		},
 		{
-			title: "TsaraTrans",
+			title: "SPAT",
 			description:
-				"Road transport management platform designed to manage logistics and transport operations.",
-			tags: ["React", "Node.js", "PostgreSQL"],
+				"SPAT Tamatave intern management",
+			tags: ["React", "Next.js", "PostgreSQL"],
 			image: "/projects/tsaratrans.jpg",
-			link: "#",
-			repo: "#",
+			link: "https://gestion-stagiaire52.vercel.app/",
+			repo: "https://github.com/WAROL52/gestion-stagiaire",
 		},
 	],
 
